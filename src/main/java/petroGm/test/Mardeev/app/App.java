@@ -1,4 +1,4 @@
-package petroGm.test.Mardeev;
+package petroGm.test.Mardeev.app;
 
 
 import petroGm.test.Mardeev.figureList.FigureListSingleton;
@@ -15,7 +15,12 @@ public class App
         parserFile.complete();
         List<Figure> figureList = FigureListSingleton.getInstance().getFigureList();
         for (Figure figure : figureList) {
-            figure.draw();
+            for (Figure figure1 : figureList) {
+                figure.draw();
+                figure1.draw();
+                figure1.intersect(figure);
+                System.out.println();
+            }
         }
     }
 }
