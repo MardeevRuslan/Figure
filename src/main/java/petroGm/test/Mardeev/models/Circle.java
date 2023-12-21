@@ -7,7 +7,6 @@ public class Circle implements Figure{
     private final String name = "circle";
     private final int x;
     public final int y;
-
     private final int r;
 
     public Circle(int x, int y, int r) {

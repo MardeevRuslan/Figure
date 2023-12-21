@@ -14,13 +14,15 @@ public class App
         ParserFile parserFile = new ParserFile();
         parserFile.complete();
         List<Figure> figureList = FigureListSingleton.getInstance().getFigureList();
-        for (Figure figure : figureList) {
-            for (Figure figure1 : figureList) {
-                figure.draw();
+        for (int i = 0; i <= figureList.size() - 1; i+=2) {
+            Figure figure = figureList.get(i);
+            figure.draw();
+            if(i + 1 < figureList.size()) {
+                Figure figure1 = figureList.get(i + 1);
                 figure1.draw();
-                figure1.intersect(figure);
-                System.out.println();
+                figure.intersect(figure1);
             }
+            System.out.println();
         }
     }
 }

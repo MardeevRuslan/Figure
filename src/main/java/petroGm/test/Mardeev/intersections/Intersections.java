@@ -19,9 +19,9 @@ public class Intersections {
                 if (figure.getClass() == Circle.class || figure1.getClass() == Circle.class) {
                     intersectPointAndCircle(figure, figure1);
                 } else if (figure.getClass() == Rect.class || figure1.getClass() == Rect.class) {
-                    intersectPointAndLine(figure, figure1);
-                } else if (figure.getClass() == Line.class || figure1.getClass() == Line.class) {
                     intersectPointAndRect(figure, figure1);
+                } else if (figure.getClass() == Line.class || figure1.getClass() == Line.class) {
+                    intersectPointAndLine(figure, figure1);
                 }
             } else if (figure.getClass() == Line.class || figure1.getClass() == Line.class) {
                 if (figure.getClass() == Circle.class || figure1.getClass() == Circle.class) {
@@ -31,7 +31,7 @@ public class Intersections {
                 }
             } else if (figure.getClass() == Circle.class || figure1.getClass() == Circle.class) {
                 if (figure.getClass() == Rect.class || figure1.getClass() == Rect.class) {
-
+                    intersectCircleAndCRect(figure, figure1);
                 }
             }
         }
@@ -215,6 +215,25 @@ public class Intersections {
         }
     }
 
+    public static void intersectCircleAndCRect(Figure figure, Figure figure1) {
+        Circle circle = (Circle) (figure instanceof Circle ? figure : figure1);
+        Rect rect = (Rect) (figure instanceof Rect ? figure : figure1);
+        List<Line> lineList = createLineForRect(rect);
+        List<Double> coordinate = new ArrayList<>();
+        for (Line line : lineList) {
+            List<Double> coordinateOne = intersectCircleAndOneLine(circle, line);
+            if (!coordinateOne.isEmpty()) {
+                coordinate.addAll(coordinateOne);
+            }
+        }
+        if (coordinate.isEmpty()) {
+            printNotIntersection(circle.getName(), rect.getName());
+        } else {
+            deleteEqualCoordinate(coordinate);
+            printIntersection(circle.getName(), rect.getName(), coordinate);
+        }
+    }
+
 
     private static List<Double> intersectPointAndOneLine(Point point, Line line) {
         List<Double> coordinate = new ArrayList<>();
@@ -251,8 +270,10 @@ public class Intersections {
         if (discriminant == 0) {
             double x = -B / (2 * A);
             double y = m * x + bLine;
-            coordinate.add(x);
-            coordinate.add(y);
+            if (isCoordinate(x, y, line)) {
+                coordinate.add(x);
+                coordinate.add(y);
+            }
             return coordinate;
         }
 
@@ -261,11 +282,22 @@ public class Intersections {
         double x2 = (-B - Math.sqrt(discriminant)) / (2 * A);
         double y2 = m * x2 + bLine;
 
-        coordinate.add(x1);
-        coordinate.add(y1);
-        coordinate.add(x2);
-        coordinate.add(y2);
+        if (isCoordinate(x1, y1, line)) {
+            coordinate.add(x1);
+            coordinate.add(y1);
+        }
+        if (isCoordinate(x2, y2, line)) {
+            coordinate.add(x2);
+            coordinate.add(y2);
+        }
         return coordinate;
+    }
+
+    private static boolean isCoordinate(double x, double y, Line line) {
+        return ((x >= Math.min(line.getX1(), line.getX2()) &&
+                x <= Math.max(line.getX1(), line.getX2()))) &&
+                ((y >= Math.min(line.getY1(), line.getY2()) &&
+                        x <= Math.max(line.getY1(), line.getY2())));
     }
 
     private static List<Double> intersectOneLine(Line line, Line line1) throws RuntimeException {
