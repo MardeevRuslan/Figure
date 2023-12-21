@@ -1,4 +1,4 @@
-package petroGm.test.Mardeev;
+package petroGm.Mardeev;
 
 import junit.framework.Test;
 import junit.framework.TestCase;

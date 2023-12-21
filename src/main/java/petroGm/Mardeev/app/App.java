@@ -1,9 +1,9 @@
-package petroGm.test.Mardeev.app;
+package petroGm.Mardeev.app;
 
 
-import petroGm.test.Mardeev.figureList.FigureListSingleton;
-import petroGm.test.Mardeev.models.Figure;
-import petroGm.test.Mardeev.parser.ParserFile;
+import petroGm.Mardeev.figureList.FigureListSingleton;
+import petroGm.Mardeev.parser.ParserFile;
+import petroGm.Mardeev.models.Figure;
 
 import java.util.List;
 

@@ -1,8 +1,9 @@
-package petroGm.test.Mardeev.factory;
+package petroGm.Mardeev.factory;
 
-import petroGm.test.Mardeev.exception.InvalidDataException;
-import petroGm.test.Mardeev.figureList.FigureListSingleton;
-import petroGm.test.Mardeev.models.*;
+import petroGm.Mardeev.exception.InvalidDataException;
+import petroGm.Mardeev.figureList.FigureListSingleton;
+import petroGm.Mardeev.models.*;
+
 
 import java.util.List;
 

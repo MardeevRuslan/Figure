@@ -1,4 +1,4 @@
-package petroGm.test.Mardeev.models;
+package petroGm.Mardeev.models;
 
 import java.util.Objects;
 

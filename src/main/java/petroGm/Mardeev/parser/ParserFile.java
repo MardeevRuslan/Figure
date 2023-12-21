@@ -1,11 +1,11 @@
-package petroGm.test.Mardeev.parser;
+package petroGm.Mardeev.parser;
 
-import petroGm.test.Mardeev.exception.InvalidDataException;
-import petroGm.test.Mardeev.factory.FigureFactory;
-import petroGm.test.Mardeev.models.Figure;
+import petroGm.Mardeev.exception.InvalidDataException;
+import petroGm.Mardeev.factory.FigureFactory;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,14 +21,12 @@ public class ParserFile {
 
 
     public void complete() {
-        ClassLoader classLoader = getClass().getClassLoader();
-        URL resourceUrl = classLoader.getResource("CreateFigure.txt");
-        if (resourceUrl == null) {
+        InputStream inputStream = getClass().getResourceAsStream("/CreateFigure.txt");
+        if (inputStream == null) {
             System.out.println("Ресурс не найден");
             return;
         }
-        File file = new File(resourceUrl.getFile());
-        try (Scanner scanner = new Scanner(file)) {
+        try (Scanner scanner = new Scanner(inputStream)) {
             while (scanner.hasNextLine()) {
                 String line = scanner.nextLine();
                 String[] parts = line.split(" ");
@@ -42,10 +40,7 @@ public class ParserFile {
                 } catch (InvalidDataException e) {
                     System.out.println(e.getMessage());
                 }
-
             }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
         }
     }
 }

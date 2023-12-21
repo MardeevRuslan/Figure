@@ -1,9 +1,10 @@
-package petroGm.test.Mardeev.models;
+package petroGm.Mardeev.models;
 
 import java.util.Objects;
 
-public class Rect implements Figure {
-    private final String name = "rect";
+public class Line implements Figure{
+
+    private final String name = "line";
     private final int x1;
     public final int y1;
 
@@ -31,7 +32,7 @@ public class Rect implements Figure {
         return name;
     }
 
-    public Rect(int x1, int y1, int x2, int y2) {
+    public Line(int x1, int y1, int x2, int y2) {
         this.x1 = x1;
         this.y1 = y1;
         this.x2 = x2;
@@ -42,8 +43,8 @@ public class Rect implements Figure {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Rect rect = (Rect) o;
-        return x1 == rect.x1 && y1 == rect.y1 && x2 == rect.x2 && y2 == rect.y2 && Objects.equals(name, rect.name);
+        Line line = (Line) o;
+        return x1 == line.x1 && y1 == line.y1 && x2 == line.x2 && y2 == line.y2 && Objects.equals(name, line.name);
     }
 
     @Override

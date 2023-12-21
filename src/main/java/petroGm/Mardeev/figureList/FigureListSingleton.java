@@ -1,6 +1,6 @@
-package petroGm.test.Mardeev.figureList;
+package petroGm.Mardeev.figureList;
 
-import petroGm.test.Mardeev.models.Figure;
+import petroGm.Mardeev.models.Figure;
 
 import java.util.ArrayList;
 import java.util.List;

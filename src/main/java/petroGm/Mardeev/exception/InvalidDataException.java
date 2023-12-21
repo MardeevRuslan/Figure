@@ -1,4 +1,4 @@
-package petroGm.test.Mardeev.exception;
+package petroGm.Mardeev.exception;
 
 public class InvalidDataException extends Exception {
     public InvalidDataException(String message) {

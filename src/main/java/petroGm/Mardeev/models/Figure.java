@@ -1,6 +1,6 @@
-package petroGm.test.Mardeev.models;
+package petroGm.Mardeev.models;
 
-import petroGm.test.Mardeev.intersections.Intersections;
+import petroGm.Mardeev.intersections.Intersections;
 
 public interface Figure {
     void draw();

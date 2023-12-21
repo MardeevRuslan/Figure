@@ -1,6 +1,7 @@
-package petroGm.test.Mardeev.intersections;
+package petroGm.Mardeev.intersections;
 
-import petroGm.test.Mardeev.models.*;
+import petroGm.Mardeev.models.*;
+
 
 import java.util.ArrayList;
 import java.util.List;
