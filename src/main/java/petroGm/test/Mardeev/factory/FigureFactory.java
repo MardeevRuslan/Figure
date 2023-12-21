@@ -28,7 +28,7 @@ public class FigureFactory {
             case "line" :
                 return createLine(parameters);
             default:
-                throw new InvalidDataException("Boss, there is no such figure on the list");
+                throw new InvalidDataException("Boss, there is no such figure on the list: " + figureType);
         }
     }
 

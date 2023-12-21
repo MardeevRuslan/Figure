@@ -37,9 +37,14 @@ public class ParserFile {
                 for (int i = 1; i < parts.length; i++) {
                     parameters.add(Integer.parseInt(parts[i]));
                 }
-                figureFactory.addFigure(figureType, parameters);
+                try {
+                    figureFactory.addFigure(figureType, parameters);
+                } catch (InvalidDataException e) {
+                    System.out.println(e.getMessage());
+                }
+
             }
-        } catch (FileNotFoundException | InvalidDataException e) {
+        } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
     }
