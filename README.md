@@ -79,5 +79,7 @@ https://disk.yandex.ru/d/KJPgQ04xLmlbVw
 #### Распаковать архив, перейти в корневую директорию и запустить:
 ```
 cd Figure-1.0
+```
+```
 java -jar Figure-1.0-jar-with-dependencies.jar
 ```
