@@ -1,5 +1,6 @@
 package petroGm.test.Mardeev.parser;
 
+import petroGm.test.Mardeev.exception.InvalidDataException;
 import petroGm.test.Mardeev.factory.FigureFactory;
 import petroGm.test.Mardeev.models.Figure;
 
@@ -11,15 +12,13 @@ import java.util.List;
 import java.util.Scanner;
 
 public class ParserFile {
-    private List<Figure> figureList;
+
+    private FigureFactory figureFactory;
 
     public ParserFile() {
-        this.figureList = new ArrayList<>();
+        this.figureFactory = new FigureFactory();
     }
 
-    public List<Figure> getFigureList() {
-        return figureList;
-    }
 
     public void complete() {
         ClassLoader classLoader = getClass().getClassLoader();
@@ -32,11 +31,15 @@ public class ParserFile {
         try (Scanner scanner = new Scanner(file)) {
             while (scanner.hasNextLine()) {
                 String line = scanner.nextLine();
-                System.out.println(line);
-                FigureFactory factory = new FigureFactory();
-
+                String[] parts = line.split(" ");
+                String figureType = parts[0];
+                List<Integer> parameters = new ArrayList<>();
+                for (int i = 1; i < parts.length; i++) {
+                    parameters.add(Integer.parseInt(parts[i]));
+                }
+                figureFactory.addFigure(figureType, parameters);
             }
-        } catch (FileNotFoundException e) {
+        } catch (FileNotFoundException | InvalidDataException e) {
             e.printStackTrace();
         }
     }
