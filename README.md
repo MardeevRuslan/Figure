@@ -68,6 +68,8 @@ make all
 #### Или Maven:
 ```
 mvn -f pom.xml package
+```
+```
 java -jar target/Figure-1.0-jar-with-dependencies.jar
 ```
 #### Или можете скачать уже собранный jar-файл в архиве zip:
